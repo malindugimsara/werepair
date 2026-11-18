@@ -18,9 +18,14 @@ if (isset($_POST["Check-request"]) && isset($_SESSION["sa21-user"])) {
         if ($row_count_doc > 0) {
             for ($i = 0; $i < $row_count_doc; $i++) {
                 $result_data_doc = $result_set_doc->fetch_assoc();
-                $file_path = "../../" . $result_data_doc["code"];
+                $resolved_rel = resolve_project_image($result_data_doc["code"]);
+                $file_path = "../../" . $resolved_rel;
                 if (file_exists($file_path)) {
                     @unlink($file_path);
+                }
+                $alt_path = preg_match('/\.webp$/i', $file_path) ? preg_replace('/\.webp$/i', '.png', $file_path) : preg_replace('/\.(png|jpe?g)$/i', '.webp', $file_path);
+                if (file_exists($alt_path)) {
+                    @unlink($alt_path);
                 }
                 Database::iud("DELETE FROM `project_images` WHERE `id`=" . intval($result_data_doc["id"]));
             }
@@ -34,9 +39,14 @@ if (isset($_POST["Check-request"]) && isset($_SESSION["sa21-user"])) {
         $results = Database::search("SELECT * FROM `project_images` WHERE `id`=" . $id);
         if ($results && $results->num_rows > 0) {
             $td = $results->fetch_assoc();
-            $file_path = "../../" . $td["code"];
+            $resolved_rel = resolve_project_image($td["code"]);
+            $file_path = "../../" . $resolved_rel;
             if (file_exists($file_path)) {
                 @unlink($file_path);
+            }
+            $alt_path = preg_match('/\.webp$/i', $file_path) ? preg_replace('/\.webp$/i', '.png', $file_path) : preg_replace('/\.(png|jpe?g)$/i', '.webp', $file_path);
+            if (file_exists($alt_path)) {
+                @unlink($alt_path);
             }
             Database::iud("DELETE FROM `project_images` WHERE `id`=" . $id);
             echo "Success";

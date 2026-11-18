@@ -48,3 +48,43 @@ class Database
         return $resultset;
     }
 }
+
+if (!function_exists('resolve_project_image')) {
+    /**
+     * Resolves project image paths between .webp and .png dynamically
+     * to prevent broken images if database extensions and disk files diverge.
+     */
+    function resolve_project_image($dbPath, $fallback = 'https://dummyimage.com/600x400/ebebeb/4a4a4a&text=No+Image')
+    {
+        if (empty($dbPath)) {
+            return $fallback;
+        }
+        $clean = ltrim($dbPath, '/\\');
+        $root = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR;
+
+        // 1. Direct check on disk
+        if (file_exists($root . $clean)) {
+            return $clean;
+        }
+
+        // 2. Try .webp if database had .png or .jpg
+        $webpCandidate = preg_replace('/\.(png|jpe?g)$/i', '.webp', $clean);
+        if ($webpCandidate !== $clean && file_exists($root . $webpCandidate)) {
+            return $webpCandidate;
+        }
+
+        // 3. Try .png if database had .webp
+        $pngCandidate = preg_replace('/\.(webp|jpe?g)$/i', '.png', $clean);
+        if ($pngCandidate !== $clean && file_exists($root . $pngCandidate)) {
+            return $pngCandidate;
+        }
+
+        // 4. Try .jpg / .jpeg
+        $jpgCandidate = preg_replace('/\.(webp|png)$/i', '.jpg', $clean);
+        if ($jpgCandidate !== $clean && file_exists($root . $jpgCandidate)) {
+            return $jpgCandidate;
+        }
+
+        return $clean;
+    }
+}

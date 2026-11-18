@@ -38,7 +38,8 @@ $share_image = "https://werepair.lk/assets/imgs/fast-laptop-repair.webp";
 if ($first_img_query && $first_img_query->num_rows > 0) {
     $first_img_data = $first_img_query->fetch_assoc();
     if (!empty($first_img_data["code"])) {
-        $share_image = "https://werepair.lk/" . ltrim($first_img_data["code"], '/');
+        $resolved_share_image = resolve_project_image($first_img_data["code"]);
+        $share_image = "https://werepair.lk/" . ltrim($resolved_share_image, '/');
     }
 }
 ?>
@@ -151,8 +152,9 @@ if ($first_img_query && $first_img_query->num_rows > 0) {
 
                             for ($i3 = 1; $i3 <= $nrow3; $i3++) {
                                 $row3 = $result3->fetch_assoc();
+                                $resolvedImg = resolve_project_image($row3["code"]);
                             ?>
-                                <img src="<?php echo htmlspecialchars($row3["code"]); ?>" alt="<?php echo htmlspecialchars($row2_events_data["title"]); ?>" class="mb-3" draggable="false" style="border-radius: 6px;">
+                                <img src="<?php echo htmlspecialchars($resolvedImg); ?>" alt="<?php echo htmlspecialchars($row2_events_data["title"]); ?>" class="mb-3" draggable="false" style="border-radius: 6px;">
                             <?php
                             }
                             ?>

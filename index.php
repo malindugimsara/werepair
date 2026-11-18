@@ -591,7 +591,7 @@ include 'admin/process/connection.php'; ?>
                     $result3 = Database::search("SELECT * FROM `project_images` WHERE `project_id`='" . $row2["id"] . "' LIMIT 1");
                     if ($result3->num_rows > 0) {
                         $row3 = $result3->fetch_assoc();
-                        $imgUrl = $row3["code"];
+                        $imgUrl = resolve_project_image($row3["code"]);
                     } else {
                         $imgUrl = "https://dummyimage.com/600x400/ebebeb/4a4a4a&text=No+Image";
                     }

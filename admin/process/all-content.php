@@ -36,7 +36,7 @@ if (isset($_POST["Check-request"]) && isset($_SESSION["sa21-user"])) {
                                         $result_data_doc = $result_set_doc->fetch_assoc();
                                     ?>
                                         <div class="col-12 col-md-6 col-lg-4 mt-2">
-                                            <div class="event-img-bg-css" style="background-image: url(../<?php echo $result_data_doc["code"]; ?>);"></div>
+                                            <div class="event-img-bg-css" style="background-image: url(../<?php echo resolve_project_image($result_data_doc["code"]); ?>);"></div>
                                             <button class="btn btn-danger img-delete-btn-width" id="article-img-delete" onclick="project_image_delete(<?php echo $result_data_doc['id']; ?>);">Delete</button>
 
                                             <button type="button" class="btn btn-danger btn-load d-none" id="article-img-delete-load_btn" style="cursor: wait;">
