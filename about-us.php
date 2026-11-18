@@ -317,27 +317,7 @@
         </div>
     </section>
     <!-- 4. Laboratory Video End -->
-
-    <!-- 5. Bottom Ready-to-Repair CTA Start -->
-    <section class="about-cta-section">
-        <div class="container">
-            <div class="about-cta-box wow fadeInUp">
-                <h2>Ready to Restore <span>Your Device?</span></h2>
-                <p>Bring your broken laptop, MacBook, or mobile to our Kohuwala laboratory for a free 60-minute diagnosis, or contact our team for island-wide courier pickup.</p>
-                <div class="about-cta-buttons">
-                    <a href="contact-us" class="btn-default" style="padding: 14px 30px;">
-                        <span>Get Free Diagnosis</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    <a href="tel:+94714021182" class="about-wa-btn" style="background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); color: #ffffff;">
-                        <i class="fa-solid fa-phone"></i> +94 71 402 1182
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 5. Bottom Ready-to-Repair CTA End -->
-
+     
     <?php include 'inc/footer.php'; ?>
 
     <?php include 'inc/script.php'; ?>
