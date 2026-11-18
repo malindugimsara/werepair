@@ -60,31 +60,51 @@ if (!function_exists('resolve_project_image')) {
             return $fallback;
         }
         $clean = ltrim($dbPath, '/\\');
-        $root = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR;
+        $webpCandidate = preg_replace('/\.(png|jpe?g)$/i', '.webp', $clean);
+        $pngCandidate  = preg_replace('/\.(webp|jpe?g)$/i', '.png', $clean);
+
+        // Check possible roots
+        $roots = [
+            dirname(__DIR__, 2) . DIRECTORY_SEPARATOR,
+            (isset($_SERVER['DOCUMENT_ROOT']) ? rtrim($_SERVER['DOCUMENT_ROOT'], '/\\') . DIRECTORY_SEPARATOR : ''),
+            ''
+        ];
 
         // 1. Direct check on disk
-        if (file_exists($root . $clean)) {
+        foreach ($roots as $root) {
+            if (!empty($root) && file_exists($root . $clean)) {
+                return $clean;
+            }
+        }
+        if (file_exists($clean)) {
             return $clean;
         }
 
         // 2. Try .webp if database had .png or .jpg
-        $webpCandidate = preg_replace('/\.(png|jpe?g)$/i', '.webp', $clean);
-        if ($webpCandidate !== $clean && file_exists($root . $webpCandidate)) {
-            return $webpCandidate;
+        if ($webpCandidate !== $clean) {
+            foreach ($roots as $root) {
+                if (!empty($root) && file_exists($root . $webpCandidate)) {
+                    return $webpCandidate;
+                }
+            }
+            if (file_exists($webpCandidate)) {
+                return $webpCandidate;
+            }
         }
 
         // 3. Try .png if database had .webp
-        $pngCandidate = preg_replace('/\.(webp|jpe?g)$/i', '.png', $clean);
-        if ($pngCandidate !== $clean && file_exists($root . $pngCandidate)) {
-            return $pngCandidate;
+        if ($pngCandidate !== $clean) {
+            foreach ($roots as $root) {
+                if (!empty($root) && file_exists($root . $pngCandidate)) {
+                    return $pngCandidate;
+                }
+            }
+            if (file_exists($pngCandidate)) {
+                return $pngCandidate;
+            }
         }
 
-        // 4. Try .jpg / .jpeg
-        $jpgCandidate = preg_replace('/\.(webp|png)$/i', '.jpg', $clean);
-        if ($jpgCandidate !== $clean && file_exists($root . $jpgCandidate)) {
-            return $jpgCandidate;
-        }
-
-        return $clean;
+        // 4. Default: If original pointed to .png or .jpg, default to .webp because modern files are .webp
+        return !empty($webpCandidate) ? $webpCandidate : $clean;
     }
 }

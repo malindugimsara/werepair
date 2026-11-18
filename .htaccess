@@ -80,6 +80,10 @@ Options -Indexes
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
+    # Auto-fallback: If image in upload/ is missing, serve .webp equivalent
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(upload/.+)\.(png|jpe?g)$ $1.webp [T=image/webp,L]
+
     # Remove .php extension (works for all folders and files)
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}\.php -f
