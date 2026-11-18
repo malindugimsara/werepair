@@ -95,7 +95,7 @@ if ($first_img_query && $first_img_query->num_rows > 0) {
             "name": "We Repair",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://werepair.lk/assets/imgs/logos/we-repair.webp"
+                "url": "https://werepair.lk/assets/imgs/logos/we-repair-m.webp"
             }
         },
         "description": "<?php echo addslashes($row2_events_data["meta_des"]); ?>"

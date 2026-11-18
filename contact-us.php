@@ -44,7 +44,7 @@
             "@type": "Organization",
             "name": "We Repair",
             "url": "https://werepair.lk/contact-us",
-            "logo": "https://werepair.lk/assets/imgs/logos/we-repair.webp",
+            "logo": "https://werepair.lk/assets/imgs/logos/we-repair-m.webp",
             "sameAs": [
                 "https://www.facebook.com/profile.php?id=61555425140416"
             ],

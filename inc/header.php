@@ -17,7 +17,7 @@ $current_page = basename($_SERVER['PHP_SELF'], ".php");
             <div class="container">
                 <!-- Logo Start -->
                 <a class="navbar-brand" href="<?php echo $url;?>">
-                    <img src="<?php echo $url;?>assets/imgs/logos/we-repair-wl.webp" alt="We Repair" class="header-logo">
+                    <img src="<?php echo $url;?>assets/imgs/logos/we-repair-m.webp" alt="We Repair" class="header-logo">
                 </a>
                 <!-- Logo End -->
 

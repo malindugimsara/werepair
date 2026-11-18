@@ -457,9 +457,9 @@ header.main-header .header-sticky.active {
 }
 
 .header-logo {
-    height: 44px;
+    height: 48px;
     width: auto;
-    max-width: 130px;
+    max-width: 140px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -7841,7 +7841,7 @@ header.main-header .header-sticky.active {
 }
 
 .footer-logo-img {
-    height: 48px;
+    height: 52px;
     width: auto;
     object-fit: contain;
 }

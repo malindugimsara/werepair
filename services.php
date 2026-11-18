@@ -44,7 +44,7 @@
             "provider": {
                 "@type": "LocalBusiness",
                 "name": "We Repair",
-                "image": "https://werepair.lk/assets/imgs/logos/we-repair.webp",
+                "image": "https://werepair.lk/assets/imgs/logos/we-repair-m.webp",
                 "telephone": "+94714021182",
                 "email": "info@werepair.lk",
                 "address": {

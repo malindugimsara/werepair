@@ -60,8 +60,8 @@
             <!-- Col 1: Brand & Trust -->
             <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 <div class="footer-brand-wrap">
-                    <a href="<?php echo $url; ?>index" class="footer-logo-link">
-                        <img src="<?php echo $url; ?>assets/imgs/logos/we-repair-wl.webp" alt="We Repair" class="footer-logo-img">
+                    <a href="<?php echo $url; ?>" class="footer-logo-link">
+                        <img src="<?php echo $url; ?>assets/imgs/logos/we-repair-m.webp" alt="We Repair" class="footer-logo-img">
                     </a>
                     <p class="footer-desc">
                         Sri Lanka's trusted specialist for Apple devices, laptops, chip-level motherboard repairs, and smart tech. Certified technicians, fast turnaround, and guaranteed genuine parts.
