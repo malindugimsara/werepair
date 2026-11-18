@@ -99,7 +99,6 @@ include 'admin/process/connection.php'; ?>
         <div class="hero-bg-video">
             <video autoplay muted loop playsinline id="myvideo">
                 <source src="assets/video/we-repair.webm" type="video/webm">
-                <source src="assets/video/we-repair.mp4" type="video/mp4">
             </video>
         </div>
         <!-- Video End -->
