@@ -31,6 +31,8 @@ if (isset($_SESSION["sa21-user"])) {
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
     <!-- main Css-->
     <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+    <!-- Toastify Css -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
 </head>
 
@@ -125,8 +127,10 @@ if (isset($_SESSION["sa21-user"])) {
     <script src="assets/js/pages/particles.app.js"></script>
     <!-- password-addon init -->
     <script src="assets/js/pages/password-addon.init.js"></script>
+    <!-- Toastify Js -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- Function -->
-    <script src="assets/js/function.js"></script>
+    <script src="assets/js/function.js?v=<?php echo time(); ?>"></script>
 </body>
 
 </html>

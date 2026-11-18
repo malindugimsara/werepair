@@ -1,300 +1,77 @@
 var function_start_status = false;
 var event_id;
-var main_url = "https://werepair.lk/admin/";
+var main_url = window.location.href.includes('/admin')
+  ? window.location.href.split('/admin')[0] + '/admin/'
+  : 'https://werepair.lk/admin/';
 
+function showToastMessage(msg, isSuccess) {
+  try {
+    if (typeof Toastify === 'function') {
+      Toastify({
+        newWindow: true,
+        text: msg,
+        gravity: "top",
+        position: "center",
+        className: isSuccess ? "bg-success" : "bg-danger",
+        duration: 2500,
+        stopOnFocus: true,
+        style: {
+          background: isSuccess
+            ? "linear-gradient(to right, #0AB39C, #405189)"
+            : "linear-gradient(to right, #f06548, #d9534f)"
+        }
+      }).showToast();
+      return;
+    }
+  } catch (e) {}
+  alert(msg);
+}
 
 function sign_in() {
   if (function_start_status == false) {
     function_start_status = true;
 
-    document.getElementById("sign-in-btn-dis-status").classList.add("d-none");
-    document
-      .getElementById("sign-in-btn-loading-button")
-      .classList.remove("d-none");
+    var btnDis = document.getElementById("sign-in-btn-dis-status");
+    var btnLoading = document.getElementById("sign-in-btn-loading-button");
+    if (btnDis) btnDis.classList.add("d-none");
+    if (btnLoading) btnLoading.classList.remove("d-none");
 
     var username = document.getElementById("username");
     var password = document.getElementById("password-input");
     var remember_me = document.getElementById("auth-remember-check");
 
-    if (username.value == "") {
-      username.style.border = "1px solid red";
+    if (!username || username.value.trim() == "") {
+      if (username) username.style.border = "1px solid red";
     }
-    if (password.value == "") {
-      password.style.border = "1px solid red";
+    if (!password || password.value == "") {
+      if (password) password.style.border = "1px solid red";
     }
 
-    if (username.value != "" && password.value != "") {
+    if (username && username.value.trim() != "" && password && password.value != "") {
       var form = new FormData();
-
-      form.append("username", username.value);
+      form.append("username", username.value.trim());
       form.append("password", password.value);
-      form.append("remember_me", remember_me.checked);
+      form.append("remember_me", remember_me ? remember_me.checked : false);
 
       var r = new XMLHttpRequest();
-
       r.onreadystatechange = function () {
         if (r.readyState == 4) {
-          var response_text = r.responseText;
-
-          var erro_status = false;
+          var response_text = (r.responseText || "").trim();
 
           if (response_text == "Success") {
             signin_set_cookie();
           } else {
-            if (response_text == "Please enter your username!") {
-              username.style.border = "1px solid red";
-              (m = document.querySelectorAll("[data-toast-sign-in]")),
-                Array.from(m).forEach(function (a) {
-                  var e = {},
-                    t = a.attributes;
-
-                  response_text && (e.text = response_text),
-                    t["data-toast-gravity"] &&
-                      (e.gravity = t["data-toast-gravity"].value.toString()),
-                    "center" && (e.position = "center"),
-                    "danger" && (e.className = "danger"),
-                    "2500" && (e.duration = "2500"),
-                    t["data-toast-style"] &&
-                      (e.style = t["data-toast-style"].value.toString()),
-                    t["data-toast-offset"] &&
-                      (e.offset = t["data-toast-offset"]),
-                    Toastify({
-                      newWindow: !0,
-                      text: e.text,
-                      gravity: e.gravity,
-                      position: e.position,
-                      className: "bg-" + e.className,
-                      stopOnFocus: !0,
-                      offset: {
-                        x: e.offset ? 50 : 0,
-                        y: e.offset ? 10 : 0,
-                      },
-                      duration: e.duration,
-                      close: "close" == e.close,
-                      style:
-                        "style" == e.style
-                          ? {
-                              background:
-                                "linear-gradient(to right, #0AB39C, #405189)",
-                            }
-                          : "",
-                    }).showToast();
-                });
-            } else if (
-              response_text ==
-              "You can't just only put spaces in the username field!"
-            ) {
-              username.style.border = "1px solid red";
-              (m = document.querySelectorAll("[data-toast-sign-in]")),
-                Array.from(m).forEach(function (a) {
-                  var e = {},
-                    t = a.attributes;
-
-                  response_text && (e.text = response_text),
-                    t["data-toast-gravity"] &&
-                      (e.gravity = t["data-toast-gravity"].value.toString()),
-                    "center" && (e.position = "center"),
-                    "danger" && (e.className = "danger"),
-                    "2500" && (e.duration = "2500"),
-                    t["data-toast-style"] &&
-                      (e.style = t["data-toast-style"].value.toString()),
-                    t["data-toast-offset"] &&
-                      (e.offset = t["data-toast-offset"]),
-                    Toastify({
-                      newWindow: !0,
-                      text: e.text,
-                      gravity: e.gravity,
-                      position: e.position,
-                      className: "bg-" + e.className,
-                      stopOnFocus: !0,
-                      offset: {
-                        x: e.offset ? 50 : 0,
-                        y: e.offset ? 10 : 0,
-                      },
-                      duration: e.duration,
-                      close: "close" == e.close,
-                      style:
-                        "style" == e.style
-                          ? {
-                              background:
-                                "linear-gradient(to right, #0AB39C, #405189)",
-                            }
-                          : "",
-                    }).showToast();
-                });
-            } else if (response_text == "Please enter your password!") {
-              password.style.border = "1px solid red";
-              (m = document.querySelectorAll("[data-toast-sign-in]")),
-                Array.from(m).forEach(function (a) {
-                  var e = {},
-                    t = a.attributes;
-
-                  response_text && (e.text = response_text),
-                    t["data-toast-gravity"] &&
-                      (e.gravity = t["data-toast-gravity"].value.toString()),
-                    "center" && (e.position = "center"),
-                    "danger" && (e.className = "danger"),
-                    "2500" && (e.duration = "2500"),
-                    t["data-toast-style"] &&
-                      (e.style = t["data-toast-style"].value.toString()),
-                    t["data-toast-offset"] &&
-                      (e.offset = t["data-toast-offset"]),
-                    Toastify({
-                      newWindow: !0,
-                      text: e.text,
-                      gravity: e.gravity,
-                      position: e.position,
-                      className: "bg-" + e.className,
-                      stopOnFocus: !0,
-                      offset: {
-                        x: e.offset ? 50 : 0,
-                        y: e.offset ? 10 : 0,
-                      },
-                      duration: e.duration,
-                      close: "close" == e.close,
-                      style:
-                        "style" == e.style
-                          ? {
-                              background:
-                                "linear-gradient(to right, #0AB39C, #405189)",
-                            }
-                          : "",
-                    }).showToast();
-                });
-            } else if (
-              response_text ==
-              "You cannot put only spaces in the password field!"
-            ) {
-              password.style.border = "1px solid red";
-              (m = document.querySelectorAll("[data-toast-sign-in]")),
-                Array.from(m).forEach(function (a) {
-                  var e = {},
-                    t = a.attributes;
-
-                  response_text && (e.text = response_text),
-                    t["data-toast-gravity"] &&
-                      (e.gravity = t["data-toast-gravity"].value.toString()),
-                    "center" && (e.position = "center"),
-                    "danger" && (e.className = "danger"),
-                    "2500" && (e.duration = "2500"),
-                    t["data-toast-style"] &&
-                      (e.style = t["data-toast-style"].value.toString()),
-                    t["data-toast-offset"] &&
-                      (e.offset = t["data-toast-offset"]),
-                    Toastify({
-                      newWindow: !0,
-                      text: e.text,
-                      gravity: e.gravity,
-                      position: e.position,
-                      className: "bg-" + e.className,
-                      stopOnFocus: !0,
-                      offset: {
-                        x: e.offset ? 50 : 0,
-                        y: e.offset ? 10 : 0,
-                      },
-                      duration: e.duration,
-                      close: "close" == e.close,
-                      style:
-                        "style" == e.style
-                          ? {
-                              background:
-                                "linear-gradient(to right, #0AB39C, #405189)",
-                            }
-                          : "",
-                    }).showToast();
-                });
-            } else if (
-              response_text == "Login information is invalid. Please try again!"
-            ) {
-              password.style.border = "1px solid red";
-              username.style.border = "1px solid red";
-
-              (m = document.querySelectorAll("[data-toast-sign-in]")),
-                Array.from(m).forEach(function (a) {
-                  var e = {},
-                    t = a.attributes;
-
-                  response_text && (e.text = response_text),
-                    t["data-toast-gravity"] &&
-                      (e.gravity = t["data-toast-gravity"].value.toString()),
-                    "center" && (e.position = "center"),
-                    "danger" && (e.className = "danger"),
-                    "2500" && (e.duration = "2500"),
-                    t["data-toast-style"] &&
-                      (e.style = t["data-toast-style"].value.toString()),
-                    t["data-toast-offset"] &&
-                      (e.offset = t["data-toast-offset"]),
-                    Toastify({
-                      newWindow: !0,
-                      text: e.text,
-                      gravity: e.gravity,
-                      position: e.position,
-                      className: "bg-" + e.className,
-                      stopOnFocus: !0,
-                      offset: {
-                        x: e.offset ? 50 : 0,
-                        y: e.offset ? 10 : 0,
-                      },
-                      duration: e.duration,
-                      close: "close" == e.close,
-                      style:
-                        "style" == e.style
-                          ? {
-                              background:
-                                "linear-gradient(to right, #0AB39C, #405189)",
-                            }
-                          : "",
-                    }).showToast();
-                });
-            } else {
-              (m = document.querySelectorAll("[data-toast-sign-in]")),
-                Array.from(m).forEach(function (a) {
-                  var e = {},
-                    t = a.attributes;
-
-                  "Please check the data you entered and try again later !" &&
-                    (e.text =
-                      "Please check the data you entered and try again later !"),
-                    t["data-toast-gravity"] &&
-                      (e.gravity = t["data-toast-gravity"].value.toString()),
-                    "center" && (e.position = "center"),
-                    "danger" && (e.className = "danger"),
-                    "2500" && (e.duration = "2500"),
-                    t["data-toast-style"] &&
-                      (e.style = t["data-toast-style"].value.toString()),
-                    t["data-toast-offset"] &&
-                      (e.offset = t["data-toast-offset"]),
-                    Toastify({
-                      newWindow: !0,
-                      text: e.text,
-                      gravity: e.gravity,
-                      position: e.position,
-                      className: "bg-" + e.className,
-                      stopOnFocus: !0,
-                      offset: {
-                        x: e.offset ? 50 : 0,
-                        y: e.offset ? 10 : 0,
-                      },
-                      duration: e.duration,
-                      close: "close" == e.close,
-                      style:
-                        "style" == e.style
-                          ? {
-                              background:
-                                "linear-gradient(to right, #0AB39C, #405189)",
-                            }
-                          : "",
-                    }).showToast();
-                });
+            if (response_text.includes("username")) {
+              if (username) username.style.border = "1px solid red";
             }
+            if (response_text.includes("password") || response_text.includes("invalid")) {
+              if (password) password.style.border = "1px solid red";
+            }
+            showToastMessage(response_text || "Please check your login details and try again!", false);
 
             function_start_status = false;
-            document
-              .getElementById("sign-in-btn-loading-button")
-              .classList.add("d-none");
-            document
-              .getElementById("sign-in-btn-dis-status")
-              .classList.remove("d-none");
+            if (btnLoading) btnLoading.classList.add("d-none");
+            if (btnDis) btnDis.classList.remove("d-none");
           }
         }
       };
@@ -303,14 +80,9 @@ function sign_in() {
       r.send(form);
     } else {
       function_start_status = false;
-      document
-        .getElementById("sign-in-btn-loading-button")
-        .classList.add("d-none");
-      document
-        .getElementById("sign-in-btn-dis-status")
-        .classList.remove("d-none");
+      if (btnLoading) btnLoading.classList.add("d-none");
+      if (btnDis) btnDis.classList.remove("d-none");
     }
-  } else {
   }
 }
 
@@ -331,53 +103,17 @@ function signin_set_cookie() {
   var password = document.getElementById("password-input");
 
   var form = new FormData();
-
-  form.append("remember_me", remember_me.checked);
-  form.append("password", password.value);
+  form.append("remember_me", remember_me ? remember_me.checked : false);
+  form.append("password", password ? password.value : "");
 
   var r = new XMLHttpRequest();
   r.onreadystatechange = function () {
     if (r.readyState == 4) {
-      (m = document.querySelectorAll("[data-toast-sign-in]")),
-        Array.from(m).forEach(function (a) {
-          var e = {},
-            t = a.attributes;
-
-          "Login successfully !" && (e.text = "Login successfully !"),
-            t["data-toast-gravity"] &&
-              (e.gravity = t["data-toast-gravity"].value.toString()),
-            "center" && (e.position = "center"),
-            "success" && (e.className = "success"),
-            "2500" && (e.duration = "2500"),
-            t["data-toast-style"] &&
-              (e.style = t["data-toast-style"].value.toString()),
-            t["data-toast-offset"] && (e.offset = t["data-toast-offset"]),
-            Toastify({
-              newWindow: !0,
-              text: e.text,
-              gravity: e.gravity,
-              position: e.position,
-              className: "bg-" + e.className,
-              stopOnFocus: !0,
-              offset: {
-                x: e.offset ? 50 : 0,
-                y: e.offset ? 10 : 0,
-              },
-              duration: e.duration,
-              close: "close" == e.close,
-              style:
-                "style" == e.style
-                  ? {
-                      background: "linear-gradient(to right, #0AB39C, #405189)",
-                    }
-                  : "",
-            }).showToast();
-        });
-
+      showToastMessage("Login successfully !", true);
       setTimeout(function () {
         function_start_status = false;
         window.location = "index.php";
-      }, 1300);
+      }, 800);
     }
   };
 

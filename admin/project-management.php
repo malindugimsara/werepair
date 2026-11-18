@@ -291,8 +291,10 @@
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+    <!-- Toastify Js -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- Function -->
-    <script src="assets/js/function.js"></script>
+    <script src="assets/js/function.js?v=<?php echo time(); ?>"></script>
     <!-- quill js -->
     <script src="assets/libs/quill/quill.min.js"></script>
 
