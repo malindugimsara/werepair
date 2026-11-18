@@ -5,7 +5,7 @@ $current_page = basename($_SERVER['PHP_SELF'], ".php");
 <div class="preloader">
     <div class="loading-container">
         <div class="loading"></div>
-        <div id="loading-icon"><img src="<?php echo $url;?>assets/imgs/logos/we-repair-m.webp" alt="Loading, please wait..."></div>
+        <div id="loading-icon"><img src="<?php echo $url;?>assets/imgs/logos/we-repair-dark.webp" alt="Loading, please wait..."></div>
     </div>
 </div>
 <!-- Preloader End -->
