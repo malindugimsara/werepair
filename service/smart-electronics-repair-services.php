@@ -14,6 +14,9 @@
     <meta name="author" content="We Repair" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://werepair.lk/service/smart-electronics-repair-services" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Smart Electronics Repair | Smart TV, JBL Speaker & DJI Drone Repair" />
     <meta property="og:description" content="Professional repair services for Smart TVs, JBL speakers, and DJI drones. Quick turnaround and quality service from certified technicians." />

@@ -1,3 +1,12 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (isset($_SESSION["sa21-user"])) {
+    header("Location: index.php");
+    exit();
+}
+?>
 <!doctype html>
 <html lang="en" data-layout="horizontal" data-topbar="dark" data-sidebar-size="lg" data-sidebar="light" data-sidebar-image="none" data-preloader="disable">
 
@@ -44,13 +53,11 @@
 
                                     <?php
                                     $username = "";
-                                    $password = "";
+                                    $remember_checked = false;
 
                                     if (isset($_COOKIE["sa21-username"])) {
-                                        $username = $_COOKIE["sa21-username"];
-                                    }
-                                    if (isset($_COOKIE["sa21-password"])) {
-                                        $password = $_COOKIE["sa21-password"];
+                                        $username = htmlspecialchars($_COOKIE["sa21-username"], ENT_QUOTES, 'UTF-8');
+                                        $remember_checked = true;
                                     }
                                     ?>
 
@@ -64,13 +71,13 @@
                                         <div class="mb-3">
                                             <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" value="<?php echo $password; ?>" onkeyup="sign_in_error_clean();">
+                                                <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" value="" onkeyup="sign_in_error_clean();" autocomplete="current-password">
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="1" id="auth-remember-check">
+                                            <input class="form-check-input" type="checkbox" value="1" id="auth-remember-check" <?php echo $remember_checked ? 'checked' : ''; ?>>
                                             <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                         </div>
 

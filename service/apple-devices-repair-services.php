@@ -14,6 +14,9 @@
     <meta name="author" content="We Repair" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://werepair.lk/service/apple-devices-repair-services" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Apple Devices Repair Services | iPhone, iPad, MacBook, iMac & AirPods" />
     <meta property="og:description" content="Professional Apple device repairs for iPhone, iPad, MacBook, iMac, and AirPods. Get fast, affordable services with genuine parts at We Repair." />

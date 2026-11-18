@@ -15,6 +15,9 @@ include 'admin/process/connection.php'; ?>
     <meta name="author" content="We Repair" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://werepair.lk/projects" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Our Projects | We Repair - Computer & Mobile Repair Showcase" />
     <meta property="og:description" content="Discover our completed computer and mobile repair projects. Trusted laptop, MacBook, desktop, and iPhone repairs with quality parts and expert care." />

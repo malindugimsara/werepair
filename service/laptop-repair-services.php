@@ -14,11 +14,14 @@
     <meta name="author" content="We Repair" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://werepair.lk/service/laptop-repair-services" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Laptop & Computer Repair Services | Dell, HP, Asus, Desktop PC Repairs" />
     <meta property="og:description" content="Reliable repairs for laptops and desktops. Battery replacement, screen repair, upgrades, and more by expert technicians at We Repair." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://werepair.lk/service/laptops-computers-repair-services" />
+    <meta property="og:url" content="https://werepair.lk/service/laptop-repair-services" />
     <meta property="og:image" content="https://werepair.lk/assets/imgs/laptops-&-computers.webp" />
 
     <!-- Twitter -->

@@ -14,6 +14,9 @@
     <meta name="author" content="We Repair" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://werepair.lk/services" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Our Services | We Repair - Computer & Mobile Repair Experts" />
     <meta property="og:description" content="Professional repair services for laptops, desktops, MacBooks, and iPhones. Quality parts, fast turnaround, and trusted technicians." />

@@ -14,6 +14,9 @@
     <meta name="author" content="We Repair" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://werepair.lk/contact-us" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Contact Us | We Repair - Expert Computer & Mobile Repair Services" />
     <meta property="og:description" content="Reach out to We Repair for professional and affordable computer and mobile repair services. Our certified technicians are ready to assist you." />
@@ -203,6 +206,9 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
 
+                                        <!-- Anti-spam Honeypot -->
+                                        <input type="text" name="website_hp" id="website_hp" style="display:none !important; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true">
+
                                         <div class="col-md-12">
                                             <button type="button" class="contact-submit-btn" id="form-btn" onclick="form_submit();">
                                                 <span>Send Message</span>
@@ -323,6 +329,7 @@
             var message = document.getElementById('message').value;
 
             var form = new FormData();
+            var hp = document.getElementById('website_hp') ? document.getElementById('website_hp').value : '';
 
             // Append all values to FormData
             form.append("name", name);
@@ -330,6 +337,7 @@
             form.append("phone", phone);
             form.append("subject", subject);
             form.append("message", message);
+            form.append("website_hp", hp);
 
             // Creating and sending the AJAX request
             var r = new XMLHttpRequest();

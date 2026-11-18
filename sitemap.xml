@@ -1,72 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+              http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-
-<url>
-  <loc>https://werepair.lk/</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/about-us</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/services</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/projects</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/contact-us</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/service/apple-devices-repair-services</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/service/laptop-repair-services</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/service/smart-electronics-repair-services</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/project-details?title=expert-iphone-screen-repair-and-replacement&amp;n=61</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/project-details?title=high-quality-laptop-battery-replacement-services&amp;n=60</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/project-details?title=macbook-pro-retina-screen-replacement-repair&amp;n=59</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://werepair.lk/index</loc>
-  <lastmod>2025-07-30T06:31:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
+  <url>
+    <loc>https://werepair.lk/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/services</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/projects</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/about-us</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/contact-us</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/service/apple-devices-repair-services</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/service/laptop-repair-services</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/service/smart-electronics-repair-services</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/project-details?title=expert-iphone-screen-repair-and-replacement&amp;n=61</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/project-details?title=high-quality-laptop-battery-replacement-services&amp;n=60</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://werepair.lk/project-details?title=macbook-pro-retina-screen-replacement-repair&amp;n=59</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
 
 </urlset>

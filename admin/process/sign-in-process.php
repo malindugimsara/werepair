@@ -2,9 +2,9 @@
 session_start();
 require "connection.php";
 
-$username = $_POST["username"];
-$password = $_POST["password"];
-$remember_me = $_POST["remember_me"];
+$username = trim($_POST["username"] ?? '');
+$password = trim($_POST["password"] ?? '');
+$remember_me = $_POST["remember_me"] ?? '';
 
 if (empty($username)) {
     echo "Please enter your username!";
@@ -15,16 +15,16 @@ if (empty($username)) {
 } else if (ctype_space($password)) {
     echo "You cannot put only spaces in the password field!";
 } else {
+    $escaped_username = Database::escape($username);
+    $hashed_password = md5($password);
 
-    $result_set = Database::search("SELECT * FROM `users` WHERE `username`='" . $username . "' AND  `password`='" . md5($password) . "'");
-    $row_count = $result_set->num_rows;
+    $result_set = Database::search("SELECT * FROM `users` WHERE `username`='" . $escaped_username . "' AND `password`='" . $hashed_password . "'");
+    $row_count = $result_set ? $result_set->num_rows : 0;
 
     if ($row_count > 0) {
         $data = $result_set->fetch_assoc();
-
         $_SESSION["sa21-user"] = $data;
         echo "Success";
-
     } else {
         echo "Login information is invalid. Please try again!";
     }

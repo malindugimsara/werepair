@@ -51,6 +51,8 @@ body {
 p {
     line-height: 1.6em;
     margin-bottom: 1.25em;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 h1,

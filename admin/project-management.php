@@ -1,9 +1,6 @@
+<?php include 'inc/url.php'; ?>
 <!doctype html>
 <html lang="en" data-layout="vertical" data-layout-style="default" data-layout-position="fixed" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-layout-width="fluid">
-
-<!-- Url Start -->
-<?php include 'inc/url.php'; ?>
-<!-- Url End -->
 
 <head>
 

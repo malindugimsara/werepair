@@ -1,19 +1,96 @@
-RewriteEngine On
+# ==============================================================================
+# We Repair - Production Hardened Apache Configuration (.htaccess)
+# ==============================================================================
 
-# ✅ Do not rewrite if the file or folder exists
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
+# 1. Disable Directory Browsing (Prevents directory content leakage)
+Options -Indexes
 
-# ✅ Remove .php extension (works for all folders and files)
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.+?)/?$ $1.php [L]
+# 2. Block Access to Sensitive Files (.git, .env, .sql, .bak, composer, etc.)
+<FilesMatch "(\.(bak|config|sql|fla|psd|ini|log|sh|env|git.*|svn)|composer\.(json|lock)|package\.(json|lock))$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
 
-# ✅ Redirect .php URLs to clean URLs (SEO-friendly)
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^\ ]+)\.php\ HTTP/
-RewriteRule ^([^.]+)\.php$ /$1 [R=301,L]
+# 3. HTTP Security Headers
+<IfModule mod_headers.c>
+    # Prevent site from being embedded in iframes on external domains (Clickjacking protection)
+    Header always set X-Frame-Options "SAMEORIGIN"
 
+    # Prevent MIME-type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Strict Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Restrict sensitive browser APIs
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# 4. Gzip Compression (Enhances Google PageSpeed & Core Web Vitals)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# 5. Browser Caching (Expires Headers for fast asset loading)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # Images & Icons
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Web Fonts
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# 6. SEO Clean URLs & Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Do not rewrite if the file or folder exists
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Remove .php extension (works for all folders and files)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.+?)/?$ $1.php [L]
+
+    # Redirect .php URLs to clean URLs (SEO-friendly)
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^\ ]+)\.php\ HTTP/
+    RewriteRule ^([^.]+)\.php$ /$1 [R=301,L]
+</IfModule>
+
+# 7. cPanel PHP Handler
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php82” package as the default “PHP” programming language.
 <IfModule mime_module>

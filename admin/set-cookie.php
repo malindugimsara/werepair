@@ -1,24 +1,19 @@
 <?php
 session_start();
-$remember_me = $_POST["remember_me"];
-$password = $_POST["password"];
+$remember_me = $_POST["remember_me"] ?? '';
 
-if ($remember_me == "true") {
-    setcookie("sa21-username", $_SESSION["sa21-user"]["username"], time() + (60 * 60 * 24 * 365));
-    setcookie("sa21-password", $password, time() + (60 * 60 * 24 * 365));
+if ($remember_me == "true" && isset($_SESSION["sa21-user"]["username"])) {
+    $cookie_options = [
+        'expires' => time() + (60 * 60 * 24 * 30), // 30 days
+        'path' => '/',
+        'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
+        'httponly' => true,
+        'samesite' => 'Lax'
+    ];
+    setcookie("sa21-username", $_SESSION["sa21-user"]["username"], $cookie_options);
+    // Explicitly delete any old password cookies
+    setcookie("sa21-password", "", time() - 3600, "/");
 } else {
-    if (isset($_COOKIE["sa21-username"]) && isset($_COOKIE["sa21-password"])) {
-
-        if (
-            $_COOKIE["sa21-username"] == $_SESSION["sa21-user"]["username"] &&
-            $_COOKIE["sa21-password"] == $password
-        ) {
-        } else {
-            setcookie("sa21-username", "", -1);
-            setcookie("sa21-password", "", -1);
-        }
-    } else {
-        setcookie("sa21-username", "", -1);
-        setcookie("sa21-password", "", -1);
-    }
+    setcookie("sa21-username", "", time() - 3600, "/");
+    setcookie("sa21-password", "", time() - 3600, "/");
 }

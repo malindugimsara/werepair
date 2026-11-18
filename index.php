@@ -16,6 +16,9 @@ include 'admin/process/connection.php'; ?>
     <meta name="author" content="We Repair" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://werepair.lk/" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="We Repair | Expert Computer & Mobile Repair Services" />
     <meta property="og:description" content="Fast and affordable repairs for laptops, desktops, MacBooks, iPhones, and more. Quality parts and certified technicians you can trust." />
@@ -35,32 +38,58 @@ include 'admin/process/connection.php'; ?>
 <body>
 
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "We Repair",
-            "url": "https://werepair.lk",
-            "logo": "https://werepair.lk/assets/imgs/logos/we-repair.webp",
-            "sameAs": [
-                "https://www.facebook.com/profile.php?id=61555425140416"
-            ],
-            "contactPoint": [{
-                "@type": "ContactPoint",
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://werepair.lk/#organization",
+                "name": "We Repair",
+                "url": "https://werepair.lk",
+                "logo": "https://werepair.lk/assets/imgs/logos/we-repair.webp",
+                "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61555425140416"
+                ],
+                "contactPoint": [{
+                    "@type": "ContactPoint",
+                    "telephone": "+94 71 402 1182",
+                    "contactType": "Customer Service",
+                    "areaServed": "LK",
+                    "availableLanguage": ["English", "Sinhala"]
+                }]
+            },
+            {
+                "@type": "ElectronicsRepairShop",
+                "@id": "https://werepair.lk/#repairshop",
+                "name": "We Repair - Computer & Mobile Repair Specialists",
+                "image": "https://werepair.lk/assets/imgs/fast-laptop-repair.webp",
+                "url": "https://werepair.lk",
                 "telephone": "+94 71 402 1182",
-                "contactType": "Customer Service",
-                "areaServed": "LK",
-                "availableLanguage": ["English", "Sinhala"]
-            }],
-            "description": "We Repair offers expert computer and mobile repair services in Sri Lanka including laptops, desktops, MacBooks, and iPhones. Trusted technicians, quality parts, and fast service.",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "5A, Priya Avenue, Kohuwala",
-                "addressLocality": "Sri Jayawaradanapura Kotte",
-                "addressRegion": "Western Province",
-                "postalCode": "",
-                "addressCountry": "LK"
+                "priceRange": "$$",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "5A, Priya Avenue, Kohuwala",
+                    "addressLocality": "Kohuwala / Nugegoda",
+                    "addressRegion": "Western Province",
+                    "postalCode": "10250",
+                    "addressCountry": "LK"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 6.8665,
+                    "longitude": 79.8894
+                },
+                "openingHoursSpecification": [
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                        "opens": "09:00",
+                        "closes": "19:00"
+                    }
+                ]
             }
-        }
+        ]
+    }
     </script>
 
     <?php include 'inc/header.php'; ?>

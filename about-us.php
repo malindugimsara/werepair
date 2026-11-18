@@ -9,23 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Primary Meta Tags -->
-    <title>We Repair | Expert Computer & Mobile Repair Services</title>
-    <meta name="description" content="We Repair offers fast, reliable, and affordable computer and mobile repair services. Trusted technicians fix laptops, desktops, Macs, iPhones, and more with quality parts." />
-    <meta name="keywords" content="computer repair, mobile repair, laptop repair, MacBook repair, iPhone screen repair, desktop computer repair, device repair service" />
+    <title>About Us | We Repair - Professional Device Repair Specialists Colombo</title>
+    <meta name="description" content="Learn about We Repair, Colombo's trusted chip-level repair laboratory specializing in Apple MacBooks, iPhones, gaming laptops, and logic board microsoldering." />
+    <meta name="keywords" content="about We Repair, computer repair Colombo, laptop repair Sri Lanka, MacBook repair experts, mobile repair Kohuwala, motherboard technician" />
     <meta name="author" content="We Repair" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://werepair.lk/about-us" />
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="We Repair | Expert Computer & Mobile Repair Services" />
-    <meta property="og:description" content="Fast and affordable repairs for laptops, desktops, MacBooks, iPhones, and more. Quality parts and certified technicians you can trust." />
+    <meta property="og:title" content="About Us | We Repair - Professional Device Repair Specialists Colombo" />
+    <meta property="og:description" content="Learn about We Repair, Colombo's trusted chip-level repair laboratory specializing in Apple MacBooks, iPhones, gaming laptops, and logic board microsoldering." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://werepair.lk/about-us/" />
+    <meta property="og:url" content="https://werepair.lk/about-us" />
     <meta property="og:image" content="https://werepair.lk/assets/imgs/fast-laptop-repair.webp" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="We Repair | Expert Computer & Mobile Repair Services" />
-    <meta name="twitter:description" content="Reliable computer and mobile repairs including laptops, desktops, MacBooks, and iPhones by certified technicians using quality parts." />
+    <meta name="twitter:title" content="About Us | We Repair - Professional Device Repair Specialists Colombo" />
+    <meta name="twitter:description" content="Learn about We Repair, Colombo's trusted chip-level repair laboratory specializing in Apple MacBooks, iPhones, gaming laptops, and logic board microsoldering." />
     <meta name="twitter:image" content="https://werepair.lk/assets/imgs/fast-laptop-repair.webp" />
 
     <?php include 'inc/style.php'; ?>

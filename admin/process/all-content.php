@@ -6,7 +6,7 @@ if (isset($_POST["Check-request"]) && isset($_SESSION["sa21-user"])) {
     $Check_request = $_POST["Check-request"];
 
     if ($Check_request == "project") {
-        $id = $_POST["id"];
+        $id = intval($_POST["id"] ?? 0);
 
         $result_set = Database::search("SELECT * FROM `project` WHERE `id`='" . $id . "'");
         $result_count =  $result_set->num_rows;
